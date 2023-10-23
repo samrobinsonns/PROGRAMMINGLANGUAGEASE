@@ -10,6 +10,24 @@ namespace PROGRAMMINGLANGUAGEASE
     {
         private Canvas canvas;
 
+        private Dictionary<String, BasicCommand> basicCommands = new Dictionary<String, BasicCommand>
+        {
+            { "moveto", new PositionCommand() },
+            { "drawto", new DrawToCommand() },
+            { "fill", new FillCommand() },
+            { "reset", new ResetCommand() },
+            { "clear", new ClearCommand() },
+            { "pen", new PenCommand() }
+        };
+
+        private Dictionary<String, GraphicsCommand> graphicsCommands = new Dictionary<String, GraphicsCommand>
+        {
+            { "rectangle", new RectangleCommand() },
+            { "circle", new CircleCommand() },
+            { "triangle", new TriangleCommand() },
+        };
+
+
         public DrawingHandler(Canvas canvas)
         {
             this.canvas = canvas;
@@ -22,34 +40,17 @@ namespace PROGRAMMINGLANGUAGEASE
                 switch (parser.Command.ToLower())
                 {
                     case "moveto":
-                        PositionCommand.Execute(canvas, parser.Args);
-                        break;
-                    case "drawto":
-                        DrawToCommand.Execute(canvas, parser.Args);
-                        break;
-                    case "fill":
-                        FillCommand.Execute(canvas, parser.Args, canvas.DrawingPen);
-                        break;
+                    case "drawto":                      
+                    case "fill":                
                     case "reset":
-                        ResetCommand.Execute(canvas);
-                        break;
                     case "clear":
-                        ClearCommand.Execute(canvas);
+                    case "pen":
+                        this.basicCommands[parser.Command.ToLower()].Execute(this.canvas, parser.Args);
                         break;
                     case "rectangle":
-                        RectangleCommand rectangleCommand = new RectangleCommand();
-                        rectangleCommand.HandleRectangleCommand(graphics, parser.Args, canvas.CurrentPosition, canvas.DrawingPen, canvas.CommandTextBox);
-                        break;
                     case "circle":
-                        CircleCommand circleCommand = new CircleCommand();
-                        circleCommand.HandleCircleCommand(graphics, parser.Args, canvas.CurrentPosition, canvas.DrawingPen, canvas.CommandTextBox);
-                        break;
                     case "triangle":
-                        TriangleCommand triangleCommand = new TriangleCommand();
-                        triangleCommand.HandleTriangleCommand(graphics, parser.Args, canvas.CurrentPosition, canvas.DrawingPen, canvas.CommandTextBox);
-                        break;
-                    case "pen":
-                        canvas.DrawingPen = PenCommand.HandlePenCommand(canvas.DrawingPen, parser.Args);
+                        this.graphicsCommands[parser.Command.ToLower()].Execute(graphics, parser.Args, this.canvas);
                         break;
                     default:
                         // Handle unrecognized command here, for example:

@@ -4,10 +4,14 @@ using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
-    public class CircleCommand
+    public class CircleCommand : GraphicsCommand
     {
-        public void HandleCircleCommand(Graphics graphics, string[] args, Point currentPosition, Pen drawingPen, TextBox commandTextBox)
+        public override void Execute(Graphics graphics, string[] args, Canvas canvas)
         {
+            Point currentPosition = canvas.CurrentPosition;
+            Pen drawingPen = canvas.DrawingPen;
+            TextBox commandTextBox = canvas.CommandTextBox;
+
             if (args.Length >= 1)
             {
                 if (int.TryParse(args[0], out int radius))

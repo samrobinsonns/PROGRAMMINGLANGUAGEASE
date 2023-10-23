@@ -3,10 +3,14 @@ using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
-    public class RectangleCommand
+    public class RectangleCommand : GraphicsCommand
     {
-        public void HandleRectangleCommand(Graphics graphics, string[] args, Point currentPosition, Pen drawingPen, TextBox commandTextBox)
+        public override void Execute(Graphics graphics, string[] args, Canvas canvas)
         {
+            Point currentPosition = canvas.CurrentPosition;
+            Pen drawingPen = canvas.DrawingPen;
+            TextBox commandTextBox = canvas.CommandTextBox;
+
             if (args.Length >= 2)
             {
                 if (int.TryParse(args[0], out int width) && int.TryParse(args[1], out int height))

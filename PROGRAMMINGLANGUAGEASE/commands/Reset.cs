@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PROGRAMMINGLANGUAGEASE.Commands;
+using System;
 using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
-    public static class ResetCommand
+    public  class ResetCommand : BasicCommand
     {
-        public static void Execute(Canvas canvas)
+        public override void Execute(Canvas canvas, string[] args)
         {
             // Reset the drawing settings to their default values
             canvas.CurrentPosition = new Point(40, 40);

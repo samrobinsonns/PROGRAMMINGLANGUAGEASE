@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PROGRAMMINGLANGUAGEASE.Commands;
+using System;
 using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
-    public static class PositionCommand
+    public class PositionCommand : BasicCommand
     {
-        public static void Execute(Canvas canvas, string[] args)
+        public override void Execute(Canvas canvas, string[] args)
         {
             if (args.Length >= 2 && int.TryParse(args[0], out int x) && int.TryParse(args[1], out int y))
             {

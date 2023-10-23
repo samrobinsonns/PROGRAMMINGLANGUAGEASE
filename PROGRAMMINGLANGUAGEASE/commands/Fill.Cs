@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PROGRAMMINGLANGUAGEASE.Commands;
+using System;
 using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
-    public static class FillCommand
+    public class FillCommand : BasicCommand
     {
-        public static void Execute(Canvas canvas, string[] args, Pen drawingPen)
+        public override void Execute(Canvas canvas, string[] args)
         {
             if (args.Length >= 1)
             {
@@ -15,7 +16,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                 {
                     case "on":
                         // Implement logic to enable filling using the color from drawingPen
-                        Color fillColor = drawingPen.Color; // Get the color from the drawingPen
+                        Color fillColor = canvas.DrawingPen.Color; // Get the color from the drawingPen
                         // Use fillColor for filling logic
                         break;
                     case "off":

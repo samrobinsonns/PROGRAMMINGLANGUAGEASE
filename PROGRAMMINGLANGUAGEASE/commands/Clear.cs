@@ -1,10 +1,11 @@
 ﻿using PROGRAMMINGLANGUAGEASE;
+using PROGRAMMINGLANGUAGEASE.Commands;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
-    public static class ClearCommand
+    public class ClearCommand : BasicCommand
     {
-        public static void Execute(Canvas canvas)
+        public override void Execute(Canvas canvas, string[] args)
         {
             // Clear the drawing canvas
             canvas.DrawingPictureBox.Invalidate();

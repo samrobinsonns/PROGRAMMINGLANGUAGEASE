@@ -3,10 +3,11 @@ using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
-    public class PenCommand
+    public class PenCommand : BasicCommand
     {
-        public static Pen HandlePenCommand(Pen currentPen, string[] args)
+        public override void Execute(Canvas canvas, string[] args)
         {
+            Pen currentPen = canvas.DrawingPen;
             if (args.Length >= 1)
             {
                 string colorName = args[0].ToLower();
@@ -75,19 +76,18 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                         newColor = Color.Lime;
                         break;
                     default:
-                        // Display an error message for an invalid color.
                         MessageBox.Show("Invalid pen color. Available colors: red, blue, ...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return currentPen; // Return the current pen if the color is invalid.
+                        return;
                 }
 
                 // Create a new pen with the new color and return it.
-                return new Pen(newColor);
+                canvas.DrawingPen = new Pen(newColor);
             }
             else
             {
                 // Display an error message for no color provided.
                 MessageBox.Show("Invalid pen command. Please provide a valid color.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return currentPen; // Return the current pen if the command is invalid.
+                return;
             }
         }
     }
