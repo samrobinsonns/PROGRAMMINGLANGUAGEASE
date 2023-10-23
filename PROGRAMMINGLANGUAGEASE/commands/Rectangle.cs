@@ -27,8 +27,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                 }
                 else
                 {
-                    // Handle parsing errors here
-                    MessageBox.Show("Invalid arguments for 'rectangle' command. Please provide valid width and height.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Error.ShowError("Invalid arguments for 'rectangle' command. Please provide valid width and height.");
                 }
             }
         }

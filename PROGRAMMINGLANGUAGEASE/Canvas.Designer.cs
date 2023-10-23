@@ -27,6 +27,7 @@
             commandTextBox = new TextBox();
             mousePointerButton = new Button();
             pictureBox = new PictureBox();
+            scriptButton = new Button();
             topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
@@ -34,6 +35,7 @@
             // topPanel
             // 
             topPanel.BackColor = Color.FromArgb(224, 224, 224);
+            topPanel.Controls.Add(scriptButton);
             topPanel.Controls.Add(runButton);
             topPanel.Controls.Add(commandTextBox);
             topPanel.Controls.Add(mousePointerButton);
@@ -78,6 +80,16 @@
             pictureBox.TabIndex = 1;
             pictureBox.TabStop = false;
             // 
+            // scriptButton
+            // 
+            scriptButton.Location = new Point(1200, 9);
+            scriptButton.Name = "scriptButton";
+            scriptButton.Size = new Size(75, 23);
+            scriptButton.TabIndex = 3;
+            scriptButton.Text = "Use Script";
+            scriptButton.UseVisualStyleBackColor = true;
+            scriptButton.Click += scriptButton_Click;
+            // 
             // Canvas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -96,5 +108,6 @@
         #endregion
 
         private Panel topPanel;
+        private Button scriptButton;
     }
 }
