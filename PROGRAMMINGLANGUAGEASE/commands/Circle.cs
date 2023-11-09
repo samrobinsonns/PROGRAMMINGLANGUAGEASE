@@ -20,7 +20,19 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                     int x = currentPosition.X - radius;
                     int y = currentPosition.Y - radius;
 
-                    graphics.DrawEllipse(drawingPen, x, y, 2 * radius, 2 * radius);
+                    // Check if filling is enabled and fill the circle if needed
+                    if (canvas.IsFilling)
+                    {
+                        using (SolidBrush brush = new SolidBrush(canvas.FillColor))
+                        {
+                            graphics.FillEllipse(brush, x, y, 2 * radius, 2 * radius);
+                        }
+                    }
+                    else
+                    {
+                        graphics.DrawEllipse(drawingPen, x, y, 2 * radius, 2 * radius);
+                    }
+
                     commandTextBox.Clear();
                 }
                 else

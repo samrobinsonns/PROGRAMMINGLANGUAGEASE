@@ -15,6 +15,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
             {
                 if (int.TryParse(args[0], out int sideLength))
                 {
+                    // Calculate the vertices of the triangle
                     int x1 = currentPosition.X;
                     int y1 = currentPosition.Y;
                     int x2 = x1 + sideLength;
@@ -24,22 +25,27 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
 
                     Point[] points = { new Point(x1, y1), new Point(x2, y2), new Point(x3, y3) };
 
-                    // Check if a new pen color has been set
-                    if (drawingPen != null)
+                    // Check if filling is enabled and fill the triangle if needed
+                    if (canvas.IsFilling)
                     {
-                        graphics.DrawPolygon(drawingPen, points);
+                        using (SolidBrush brush = new SolidBrush(canvas.FillColor))
+                        {
+                            graphics.FillPolygon(brush, points);
+                        }
                     }
-                    else
-                    {
-                        graphics.DrawPolygon(Pens.Black, points); // Default to black if no pen color is set
-                    }
+
+                    // Draw the outline of the triangle
+                    graphics.DrawPolygon(drawingPen, points);
                     commandTextBox.Clear();
                 }
                 else
                 {
-                    // Handle parsing errors here
                     MessageBox.Show("Invalid arguments for 'triangle' command. Please provide a valid side length.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Not enough arguments for 'triangle' command. Please provide a side length.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

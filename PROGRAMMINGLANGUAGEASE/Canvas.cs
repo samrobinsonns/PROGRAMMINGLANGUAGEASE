@@ -14,8 +14,22 @@ namespace PROGRAMMINGLANGUAGEASE
         private bool mousePointerMode = false;
         private Point currentPosition = new Point(40, 40); // Store the current position
         private Pen drawingPen = new Pen(Color.Black); // Default pen color is black
+        private bool isFilling = false;
+        private Color fillColor = Color.Black; // Default fill color is black
 
         public DrawingHandler drawingHandler;
+
+        public bool IsFilling
+        {
+            get { return isFilling; }
+            set { isFilling = value; }
+        }
+
+        public Color FillColor
+        {
+            get { return fillColor; }
+            set { fillColor = value; }
+        }
 
         public PictureBox DrawingPictureBox
         {

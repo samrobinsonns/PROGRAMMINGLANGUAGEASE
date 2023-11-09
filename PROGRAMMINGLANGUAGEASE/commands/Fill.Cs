@@ -8,6 +8,8 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
     {
         public override void Execute(Canvas canvas, string[] args)
         {
+            TextBox commandTextBox = canvas.CommandTextBox; // Get the command text box from the canvas
+
             if (args.Length >= 1)
             {
                 string fillMode = args[0].ToLower();
@@ -15,24 +17,28 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                 switch (fillMode)
                 {
                     case "on":
-                        // Implement logic to enable filling using the color from drawingPen
-                        Color fillColor = canvas.DrawingPen.Color; // Get the color from the drawingPen
-                        // Use fillColor for filling logic
+                        // Enable filling with the current pen color
+                        canvas.IsFilling = true;
+                        canvas.FillColor = canvas.DrawingPen.Color;
                         break;
                     case "off":
-                        // Implement logic to disable filling
+                        // Disable filling
+                        canvas.IsFilling = false;
                         break;
                     default:
                         // Handle unrecognized fill mode
                         MessageBox.Show("Invalid fill mode. Use 'on' or 'off'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
+                        return; // Exit the method after showing the message box
                 }
             }
             else
             {
                 // Handle missing fill mode argument
                 MessageBox.Show("Missing argument for 'fill' command. Use 'on' or 'off'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit the method after showing the message box
             }
+
+            commandTextBox.Clear(); // Clear the command text box after executing the command
         }
     }
 }

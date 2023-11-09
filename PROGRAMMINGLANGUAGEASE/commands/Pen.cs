@@ -7,6 +7,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
     {
         public override void Execute(Canvas canvas, string[] args)
         {
+            TextBox commandTextBox = canvas.CommandTextBox;
             Pen currentPen = canvas.DrawingPen;
             if (args.Length >= 1)
             {
@@ -82,6 +83,8 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
 
                 // Create a new pen with the new color and return it.
                 canvas.DrawingPen = new Pen(newColor);
+                // Set the fill color to the new color
+                canvas.FillColor = newColor;
             }
             else
             {
@@ -89,6 +92,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                 MessageBox.Show("Invalid pen command. Please provide a valid color.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            commandTextBox.Clear();
         }
     }
 }
