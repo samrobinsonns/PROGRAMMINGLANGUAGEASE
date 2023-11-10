@@ -4,9 +4,15 @@ using PROGRAMMINGLANGUAGEASE.Commands;
 
 namespace UnitTests
 {
+    /// <summary>
+    /// Represents a test class for testing the FillCommand class.
+    /// </summary>
     [TestClass]
     public class FillCommandTests
     {
+        /// <summary>
+        /// Test method to verify that Execute method toggles the fill mode on.
+        /// </summary>
         [TestMethod]
         public void Execute_ToggleFillModeOn()
         {
@@ -22,6 +28,9 @@ namespace UnitTests
             Assert.IsTrue(canvas.IsFilling);
         }
 
+        /// <summary>
+        /// Test method to verify that Execute method toggles the fill mode off.
+        /// </summary>
         [TestMethod]
         public void Execute_ToggleFillModeOff()
         {

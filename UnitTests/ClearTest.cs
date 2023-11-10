@@ -6,9 +6,15 @@ using System.Windows.Forms;
 
 namespace UnitTests
 {
+    /// <summary>
+    /// Represents a test class for testing the ClearCommand class.
+    /// </summary>
     [TestClass]
     public class ClearCommandTests
     {
+        /// <summary>
+        /// Test method to verify that Execute method clears the canvas after drawing.
+        /// </summary>
         [TestMethod]
         public void Execute_ClearsCanvas_AfterDrawing()
         {

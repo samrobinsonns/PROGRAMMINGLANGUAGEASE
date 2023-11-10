@@ -6,9 +6,15 @@ using System.Windows.Forms;
 
 namespace UnitTests
 {
+    /// <summary>
+    /// Represents a test class for testing the RectangleCommand class.
+    /// </summary>
     [TestClass]
     public class RectangleCommandTests
     {
+        /// <summary>
+        /// Test method to verify that executing the RectangleCommand draws a rectangle with valid dimensions.
+        /// </summary>
         [TestMethod]
         public void Execute_DrawsRectangle_WithValidDimensions()
         {
@@ -22,6 +28,10 @@ namespace UnitTests
             Assert.IsTrue(string.IsNullOrEmpty(canvas.CommandTextBox.Text));
         }
 
+        /// <summary>
+        /// Test method to verify that executing the RectangleCommand with invalid arguments shows an error message.
+        /// </summary>
+       
         [TestMethod]
         public void Execute_InvalidArguments_ShowsErrorMessage()
         {

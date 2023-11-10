@@ -6,9 +6,15 @@ using System.Windows.Forms;
 
 namespace UnitTests
 {
+    /// <summary>
+    /// Represents a test class for testing the DrawToCommand class.
+    /// </summary>
     [TestClass]
     public class DrawToCommandTests
     {
+        /// <summary>
+        /// Test method to verify that Execute method draws to a valid location and updates the current position.
+        /// </summary>
         [TestMethod]
         public void Execute_DrawTo_WithValidDimensions()
         {
@@ -22,6 +28,9 @@ namespace UnitTests
             Assert.AreEqual(new Point(100, 50), canvas.CurrentPosition);
         }
 
+        /// <summary>
+        /// Test method to verify that Execute method shows an error message for invalid arguments.
+        /// </summary>
         [TestMethod]
         public void Execute_InvalidArguments_ShowsErrorMessage()
         {
