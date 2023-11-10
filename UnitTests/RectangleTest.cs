@@ -7,31 +7,30 @@ using System.Windows.Forms;
 namespace UnitTests
 {
     [TestClass]
-    public class CircleCommandTests
+    public class RectangleCommandTests
     {
         [TestMethod]
-        public void Execute_WithValidRadius_DrawsCircle()
+        public void Execute_DrawsRectangle_WithValidDimensions()
         {
             var canvas = new Canvas();
-            var circleCommand = new CircleCommand();
-            string[] args = new string[] { "50" }; // Testr radius for circle
+            var rectangleCommand = new RectangleCommand();
+            string[] args = { "100", "50" }; // Test dimensions
             var graphics = Graphics.FromImage(new Bitmap(100, 100));
 
-            circleCommand.Execute(graphics, args, canvas);
+            rectangleCommand.Execute(graphics, args, canvas);
 
             Assert.IsTrue(string.IsNullOrEmpty(canvas.CommandTextBox.Text));
         }
 
         [TestMethod]
-        public void Execute_WithInvalidRadius_ShowsErrorMessage()
+        public void Execute_InvalidArguments_ShowsErrorMessage()
         {
             var canvas = new Canvas();
-            var circleCommand = new CircleCommand();
-            string[] args = new string[] { "invalidRadius" };
+            var rectangleCommand = new RectangleCommand();
+            string[] args = { "invalid", "50" }; // Invalid width
             var graphics = Graphics.FromImage(new Bitmap(100, 100));
 
-            circleCommand.Execute(graphics, args, canvas);
-
+            rectangleCommand.Execute(graphics, args, canvas);
         }
     }
 }

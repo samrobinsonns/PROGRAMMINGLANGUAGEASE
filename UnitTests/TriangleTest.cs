@@ -7,14 +7,14 @@ using System.Windows.Forms;
 namespace UnitTests
 {
     [TestClass]
-    public class CircleCommandTests
+    public class TriangleCommandTests
     {
         [TestMethod]
         public void Execute_WithValidRadius_DrawsCircle()
         {
             var canvas = new Canvas();
-            var circleCommand = new CircleCommand();
-            string[] args = new string[] { "50" }; // Testr radius for circle
+            var circleCommand = new TriangleCommand();
+            string[] args = new string[] { "50" }; // Test size for triangle
             var graphics = Graphics.FromImage(new Bitmap(100, 100));
 
             circleCommand.Execute(graphics, args, canvas);
@@ -26,11 +26,11 @@ namespace UnitTests
         public void Execute_WithInvalidRadius_ShowsErrorMessage()
         {
             var canvas = new Canvas();
-            var circleCommand = new CircleCommand();
-            string[] args = new string[] { "invalidRadius" };
+            var triangleCommand = new TriangleCommand();
+            string[] args = new string[] { "invalidSize" };
             var graphics = Graphics.FromImage(new Bitmap(100, 100));
 
-            circleCommand.Execute(graphics, args, canvas);
+            triangleCommand.Execute(graphics, args, canvas);
 
         }
     }
