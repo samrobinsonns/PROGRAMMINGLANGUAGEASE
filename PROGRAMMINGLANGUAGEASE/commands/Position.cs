@@ -16,7 +16,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
             }
             else
             {
-                MessageBox.Show("Invalid arguments for 'position' command. Please provide valid coordinates.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid arguments for 'moveto' command. Please provide valid coordinates.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

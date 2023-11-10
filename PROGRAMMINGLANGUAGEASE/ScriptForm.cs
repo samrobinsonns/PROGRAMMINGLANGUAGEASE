@@ -69,29 +69,16 @@ namespace PROGRAMMINGLANGUAGEASE
             string scriptContent = ScriptTextBox.Text;
 
             // Split the script content into individual lines.
-            string[] lines = scriptContent.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = scriptContent.Split("\n", StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string line in lines)
             {
-                // Split the line into individual commands using commas.
-                string[] commands = line.Split(',');
+                // Create an instance of the CommandParser for the current line.
+                CommandParser parser = new CommandParser(line);
 
-                foreach (string commandText in commands)
-                {
-                    // Trim any leading or trailing spaces.
-                    string trimmedCommand = commandText.Trim();
-
-                    if (!string.IsNullOrEmpty(trimmedCommand))
-                    {
-                        // Create an instance of the CommandParser for the current command.
-                        CommandParser parser = new CommandParser(trimmedCommand);
-
-                        // Execute the drawing command based on the parsed command.
-                        canvas.drawingHandler.ExecuteDrawing(parser);
-                    }
-                }
+                // Execute the drawing command based on the parsed command.
+                canvas.drawingHandler.ExecuteDrawing(parser);
             }
         }
-
     }
 }

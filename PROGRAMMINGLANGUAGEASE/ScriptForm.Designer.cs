@@ -19,11 +19,10 @@
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             ScriptTextBox = new RichTextBox();
             openButton = new Button();
             saveButton = new Button();
-            loadScriptButton = new Button(); // Added Load Script button
+            loadScriptButton = new Button();
             SuspendLayout();
             // 
             // ScriptTextBox
@@ -69,7 +68,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(saveButton);
             Controls.Add(openButton);
-            Controls.Add(loadScriptButton); // Add the Load Script button to the form
+            Controls.Add(loadScriptButton);
             Controls.Add(ScriptTextBox);
             Name = "ScriptForm";
             Text = "Script Editor";
