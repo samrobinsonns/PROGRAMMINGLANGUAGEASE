@@ -5,8 +5,16 @@ using PROGRAMMINGLANGUAGEASE.Commands;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
+    /// <summary>
+    /// Represents a command to draw a line from the current position to a specified destination on the canvas.
+    /// </summary>
     public class DrawToCommand : BasicCommand
     {
+        /// <summary>
+        /// Executes the 'drawto' command on the given canvas with the specified arguments.
+        /// </summary>
+        /// <param name="canvas">The canvas on which to draw the line.</param>
+        /// <param name="args">The arguments for the 'drawto' command, expecting x and y coordinates as the first two arguments.</param>
         public override void Execute(Canvas canvas, string[] args)
         {
             if (args.Length >= 2 && int.TryParse(args[0], out int x) && int.TryParse(args[1], out int y))

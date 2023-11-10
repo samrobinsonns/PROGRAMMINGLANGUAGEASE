@@ -4,17 +4,26 @@ using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE
 {
-
+    /// <summary>
+    /// Represents a form for loading, saving, and executing scripts for drawing commands.
+    /// </summary>
     public partial class ScriptForm : Form
     {
         private Canvas canvas; // Store the Canvas object
 
+        /// <summary>
+        /// Initializes a new instance of the ScriptForm class with a reference to a Canvas object.
+        /// </summary>
+        /// <param name="canvas">The canvas to draw on.</param>
         public ScriptForm(Canvas canvas)
         {
             InitializeComponent();
             this.canvas = canvas;
         }
 
+        /// <summary>
+        /// Handles the Open button click event to open and load a script file.
+        /// </summary>
         private void openButton_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -27,7 +36,6 @@ namespace PROGRAMMINGLANGUAGEASE
                     string fileName = openFileDialog.FileName;
                     try
                     {
-                        // Read the selected script file and load it into ScriptTextBox.
                         string scriptContent = File.ReadAllText(fileName);
                         ScriptTextBox.Text = scriptContent;
                     }
@@ -39,6 +47,9 @@ namespace PROGRAMMINGLANGUAGEASE
             }
         }
 
+        /// <summary>
+        /// Handles the Save button click event to save the script content to a file.
+        /// </summary>
         private void saveButton_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -51,7 +62,6 @@ namespace PROGRAMMINGLANGUAGEASE
                     string fileName = saveFileDialog.FileName;
                     try
                     {
-                        // Save the script content from ScriptTextBox to the selected file.
                         File.WriteAllText(fileName, ScriptTextBox.Text);
                         MessageBox.Show("Script saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -63,20 +73,17 @@ namespace PROGRAMMINGLANGUAGEASE
             }
         }
 
+        /// <summary>
+        /// Handles the Load Script button click event to execute the script commands.
+        /// </summary>
         private void loadScriptButton_Click(object sender, EventArgs e)
         {
-            // Get the script content from the ScriptTextBox.
             string scriptContent = ScriptTextBox.Text;
-
-            // Split the script content into individual lines.
             string[] lines = scriptContent.Split("\n", StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string line in lines)
             {
-                // Create an instance of the CommandParser for the current line.
                 CommandParser parser = new CommandParser(line);
-
-                // Execute the drawing command based on the parsed command.
                 canvas.drawingHandler.ExecuteDrawing(parser);
             }
         }

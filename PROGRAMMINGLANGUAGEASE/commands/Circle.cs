@@ -4,8 +4,17 @@ using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
+    /// <summary>
+    /// Represents a command to draw a circle on the canvas.
+    /// </summary>
     public class CircleCommand : GraphicsCommand
     {
+        /// <summary>
+        /// Executes the circle command on the given canvas using specified graphics and arguments.
+        /// </summary>
+        /// <param name="graphics">The graphics object to draw the circle.</param>
+        /// <param name="args">The arguments for the circle command, expecting a radius as the first argument.</param>
+        /// <param name="canvas">The canvas on which to draw the circle.</param>
         public override void Execute(Graphics graphics, string[] args, Canvas canvas)
         {
             Point currentPosition = canvas.CurrentPosition;
@@ -44,3 +53,4 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
         }
     }
 }
+

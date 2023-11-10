@@ -3,16 +3,34 @@ using System.Collections.Generic;
 
 namespace ProgrammingLanguageAssignment
 {
+    /// <summary>
+    /// Parses a command string into a command and its arguments.
+    /// </summary>
     public class CommandParser
     {
+        /// <summary>
+        /// Gets the parsed command.
+        /// </summary>
         public string Command { get; private set; } = "";
+
+        /// <summary>
+        /// Gets the parsed arguments of the command.
+        /// </summary>
         public string[] Args { get; private set; } = Array.Empty<string>();
 
+        /// <summary>
+        /// Initializes a new instance of the CommandParser class with a command string.
+        /// </summary>
+        /// <param name="commandText">The command string to parse.</param>
         public CommandParser(string commandText)
         {
             ParseCommand(commandText);
         }
 
+        /// <summary>
+        /// Parses the command string into the Command and Args properties.
+        /// </summary>
+        /// <param name="commandText">The command string to parse.</param>
         private void ParseCommand(string commandText)
         {
             string[] commandParts = commandText.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -36,6 +54,12 @@ namespace ProgrammingLanguageAssignment
             }
         }
 
+        /// <summary>
+        /// Parses the arguments from the command parts starting from a given index.
+        /// </summary>
+        /// <param name="commandParts">The array of command parts.</param>
+        /// <param name="startIndex">The start index for parsing arguments.</param>
+        /// <returns>An array of arguments.</returns>
         private string[] ParseArguments(string[] commandParts, int startIndex)
         {
             List<string> arguments = new List<string>();

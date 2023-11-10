@@ -3,8 +3,16 @@ using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
+    /// <summary>
+    /// Represents a command to change the pen color for drawing on the canvas.
+    /// </summary>
     public class PenCommand : BasicCommand
     {
+        /// <summary>
+        /// Executes the 'pen' command on the given canvas with the specified arguments.
+        /// </summary>
+        /// <param name="canvas">The canvas on which to change the pen color.</param>
+        /// <param name="args">The arguments for the 'pen' command, expecting a color name as the first argument.</param>
         public override void Execute(Canvas canvas, string[] args)
         {
             TextBox commandTextBox = canvas.CommandTextBox;

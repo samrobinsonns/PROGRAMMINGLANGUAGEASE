@@ -4,8 +4,16 @@ using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
+    /// <summary>
+    /// Represents a command to toggle the fill mode on or off in a canvas.
+    /// </summary>
     public class FillCommand : BasicCommand
     {
+        /// <summary>
+        /// Executes the fill command on the given canvas.
+        /// </summary>
+        /// <param name="canvas">The canvas on which to toggle the fill mode.</param>
+        /// <param name="args">The arguments for the fill command, expecting 'on' or 'off' as the first argument.</param>
         public override void Execute(Canvas canvas, string[] args)
         {
             TextBox commandTextBox = canvas.CommandTextBox; // Get the command text box from the canvas

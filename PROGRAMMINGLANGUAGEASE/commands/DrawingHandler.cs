@@ -6,10 +6,16 @@ using ProgrammingLanguageAssignment;
 
 namespace PROGRAMMINGLANGUAGEASE
 {
+    /// <summary>
+    /// Handles the execution of drawing commands on a canvas.
+    /// </summary>
     public class DrawingHandler
     {
         private Canvas canvas;
 
+        /// <summary>
+        /// Stores basic drawing commands.
+        /// </summary>
         private Dictionary<String, BasicCommand> basicCommands = new Dictionary<String, BasicCommand>
         {
             { "moveto", new PositionCommand() },
@@ -20,6 +26,9 @@ namespace PROGRAMMINGLANGUAGEASE
             { "pen", new PenCommand() }
         };
 
+        /// <summary>
+        /// Stores graphics commands for shapes.
+        /// </summary>
         private Dictionary<String, GraphicsCommand> graphicsCommands = new Dictionary<String, GraphicsCommand>
         {
             { "rectangle", new RectangleCommand() },
@@ -27,12 +36,19 @@ namespace PROGRAMMINGLANGUAGEASE
             { "triangle", new TriangleCommand() },
         };
 
-
+        /// <summary>
+        /// Initializes a new instance of the DrawingHandler class with a specified canvas.
+        /// </summary>
+        /// <param name="canvas">The canvas to draw on.</param>
         public DrawingHandler(Canvas canvas)
         {
             this.canvas = canvas;
         }
 
+        /// <summary>
+        /// Executes the drawing command parsed by the CommandParser.
+        /// </summary>
+        /// <param name="parser">The CommandParser containing the command to execute.</param>
         public void ExecuteDrawing(CommandParser parser)
         {
             using (Graphics graphics = canvas.DrawingPictureBox.CreateGraphics())
@@ -40,8 +56,8 @@ namespace PROGRAMMINGLANGUAGEASE
                 switch (parser.Command.ToLower())
                 {
                     case "moveto":
-                    case "drawto":                      
-                    case "fill":                
+                    case "drawto":
+                    case "fill":
                     case "reset":
                     case "clear":
                     case "pen":

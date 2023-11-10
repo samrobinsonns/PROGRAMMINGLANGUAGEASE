@@ -3,8 +3,17 @@ using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
+    /// <summary>
+    /// Represents a command to draw a rectangle on the canvas.
+    /// </summary>
     public class RectangleCommand : GraphicsCommand
     {
+        /// <summary>
+        /// Executes the 'rectangle' command on the given canvas with the specified arguments.
+        /// </summary>
+        /// <param name="graphics">The graphics object to be used for drawing the rectangle.</param>
+        /// <param name="args">The arguments for the 'rectangle' command, expecting width and height as the first two arguments.</param>
+        /// <param name="canvas">The canvas on which to draw the rectangle.</param>
         public override void Execute(Graphics graphics, string[] args, Canvas canvas)
         {
             Point currentPosition = canvas.CurrentPosition;

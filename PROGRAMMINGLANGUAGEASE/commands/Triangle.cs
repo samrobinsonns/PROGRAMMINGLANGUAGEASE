@@ -3,8 +3,17 @@ using System.Windows.Forms;
 
 namespace PROGRAMMINGLANGUAGEASE.Commands
 {
+    /// <summary>
+    /// Represents a command to draw a triangle on the canvas.
+    /// </summary>
     public class TriangleCommand : GraphicsCommand
     {
+        /// <summary>
+        /// Executes the triangle command on the given canvas using specified graphics and arguments.
+        /// </summary>
+        /// <param name="graphics">The graphics object to draw the triangle.</param>
+        /// <param name="args">The arguments for the triangle command, expecting a side length as the first argument.</param>
+        /// <param name="canvas">The canvas on which to draw the triangle.</param>
         public override void Execute(Graphics graphics, string[] args, Canvas canvas)
         {
             Point currentPosition = canvas.CurrentPosition;
@@ -21,7 +30,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                     int x2 = x1 + sideLength;
                     int y2 = y1;
                     int x3 = x1 + sideLength / 2;
-                    int y3 = y1 - (int)(System.Math.Sqrt(3) * sideLength / 2);
+                    int y3 = y1 - (int)(Math.Sqrt(3) * sideLength / 2);
 
                     Point[] points = { new Point(x1, y1), new Point(x2, y2), new Point(x3, y3) };
 
