@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PROGRAMMINGLANGUAGEASE</name>
+    </assembly>
+    <members>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Canvas">
+            <summary>
+            Represents the main canvas for drawing and executing commands in the application.
+            </summary>
+        </member>
+        <member name="P:PROGRAMMINGLANGUAGEASE.Canvas.IsFilling">
+            <summary>
+            Gets or sets a value indicating whether the canvas is in filling mode.
+            </summary>
+        </member>
+        <member name="P:PROGRAMMINGLANGUAGEASE.Canvas.FillColor">
+            <summary>
+            Gets or sets the fill color for shapes.
+            </summary>
+        </member>
+        <member name="P:PROGRAMMINGLANGUAGEASE.Canvas.DrawingPictureBox">
+            <summary>
+            Gets the PictureBox used for drawing.
+            </summary>
+        </member>
+        <member name="P:PROGRAMMINGLANGUAGEASE.Canvas.CurrentPosition">
+            <summary>
+            Gets or sets the current position on the canvas.
+            </summary>
+        </member>
+        <member name="P:PROGRAMMINGLANGUAGEASE.Canvas.DrawingPen">
+            <summary>
+            Gets or sets the pen used for drawing.
+            </summary>
+        </member>
+        <member name="P:PROGRAMMINGLANGUAGEASE.Canvas.CommandTextBox">
+            <summary>
+            Gets the TextBox for command input.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Canvas.#ctor">
+            <summary>
+            Initializes a new instance of the Canvas class.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Canvas.runButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Run button click event to execute the command entered in the command text box.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Canvas.commandTextBox_KeyUp(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Handles the KeyUp event of the command text box to execute commands on pressing Enter.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Canvas.mousePointerButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Toggles the mouse pointer mode between drawing and normal modes.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Canvas.pictureBox_MouseClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles mouse clicks on the PictureBox to set the current position for drawing.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Canvas.scriptButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Opens a new script window for loading and executing scripts.
+            </summary>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.BasicCommand">
+            <summary>
+            Represents the base class for basic commands that can be executed on a canvas.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.BasicCommand.Execute(PROGRAMMINGLANGUAGEASE.Canvas,System.String[])">
+            <summary>
+            Executes the command on the given canvas with the specified arguments.
+            </summary>
+            <param name="canvas">The canvas on which to execute the command.</param>
+            <param name="args">The arguments for the command.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.CircleCommand">
+            <summary>
+            Represents a command to draw a circle on the canvas.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.CircleCommand.Execute(System.Drawing.Graphics,System.String[],PROGRAMMINGLANGUAGEASE.Canvas)">
+            <summary>
+            Executes the circle command on the given canvas using specified graphics and arguments.
+            </summary>
+            <param name="graphics">The graphics object to draw the circle.</param>
+            <param name="args">The arguments for the circle command, expecting a radius as the first argument.</param>
+            <param name="canvas">The canvas on which to draw the circle.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.DrawToCommand">
+            <summary>
+            Represents a command to draw a line from the current position to a specified destination on the canvas.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.DrawToCommand.Execute(PROGRAMMINGLANGUAGEASE.Canvas,System.String[])">
+            <summary>
+            Executes the 'drawto' command on the given canvas with the specified arguments.
+            </summary>
+            <param name="canvas">The canvas on which to draw the line.</param>
+            <param name="args">The arguments for the 'drawto' command, expecting x and y coordinates as the first two arguments.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.FillCommand">
+            <summary>
+            Represents a command to toggle the fill mode on or off in a canvas.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.FillCommand.Execute(PROGRAMMINGLANGUAGEASE.Canvas,System.String[])">
+            <summary>
+            Executes the fill command on the given canvas.
+            </summary>
+            <param name="canvas">The canvas on which to toggle the fill mode.</param>
+            <param name="args">The arguments for the fill command, expecting 'on' or 'off' as the first argument.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.GraphicsCommand">
+            <summary>
+            Represents the base class for graphics commands that can be executed on a canvas.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.GraphicsCommand.Execute(System.Drawing.Graphics,System.String[],PROGRAMMINGLANGUAGEASE.Canvas)">
+            <summary>
+            Executes a graphics command on the given canvas using specified graphics and arguments.
+            </summary>
+            <param name="graphics">The graphics object to be used for drawing.</param>
+            <param name="args">The arguments for the command.</param>
+            <param name="canvas">The canvas on which to execute the graphics command.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.PenCommand">
+            <summary>
+            Represents a command to change the pen color for drawing on the canvas.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.PenCommand.Execute(PROGRAMMINGLANGUAGEASE.Canvas,System.String[])">
+            <summary>
+            Executes the 'pen' command on the given canvas with the specified arguments.
+            </summary>
+            <param name="canvas">The canvas on which to change the pen color.</param>
+            <param name="args">The arguments for the 'pen' command, expecting a color name as the first argument.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.PositionCommand">
+            <summary>
+            Represents a command to change the current position on the canvas.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.PositionCommand.Execute(PROGRAMMINGLANGUAGEASE.Canvas,System.String[])">
+            <summary>
+            Executes the 'moveto' command on the given canvas with the specified arguments.
+            </summary>
+            <param name="canvas">The canvas on which to change the position.</param>
+            <param name="args">The arguments for the 'moveto' command, expecting x and y coordinates as the first two arguments.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.RectangleCommand">
+            <summary>
+            Represents a command to draw a rectangle on the canvas.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.RectangleCommand.Execute(System.Drawing.Graphics,System.String[],PROGRAMMINGLANGUAGEASE.Canvas)">
+            <summary>
+            Executes the 'rectangle' command on the given canvas with the specified arguments.
+            </summary>
+            <param name="graphics">The graphics object to be used for drawing the rectangle.</param>
+            <param name="args">The arguments for the 'rectangle' command, expecting width and height as the first two arguments.</param>
+            <param name="canvas">The canvas on which to draw the rectangle.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.ResetCommand">
+            <summary>
+            Represents a command to reset the drawing settings to their default values.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.ResetCommand.Execute(PROGRAMMINGLANGUAGEASE.Canvas,System.String[])">
+            <summary>
+            Executes the reset command on the given canvas.
+            </summary>
+            <param name="canvas">The canvas on which to execute the reset command.</param>
+            <param name="args">The arguments for the command, not used in this command.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.TriangleCommand">
+            <summary>
+            Represents a command to draw a triangle on the canvas.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.TriangleCommand.Execute(System.Drawing.Graphics,System.String[],PROGRAMMINGLANGUAGEASE.Canvas)">
+            <summary>
+            Executes the triangle command on the given canvas using specified graphics and arguments.
+            </summary>
+            <param name="graphics">The graphics object to draw the triangle.</param>
+            <param name="args">The arguments for the triangle command, expecting a side length as the first argument.</param>
+            <param name="canvas">The canvas on which to draw the triangle.</param>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.DrawingHandler">
+            <summary>
+            Handles the execution of drawing commands on a canvas.
+            </summary>
+        </member>
+        <member name="F:PROGRAMMINGLANGUAGEASE.DrawingHandler.basicCommands">
+            <summary>
+            Stores basic drawing commands.
+            </summary>
+        </member>
+        <member name="F:PROGRAMMINGLANGUAGEASE.DrawingHandler.graphicsCommands">
+            <summary>
+            Stores graphics commands for shapes.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.DrawingHandler.#ctor(PROGRAMMINGLANGUAGEASE.Canvas)">
+            <summary>
+            Initializes a new instance of the DrawingHandler class with a specified canvas.
+            </summary>
+            <param name="canvas">The canvas to draw on.</param>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.DrawingHandler.ExecuteDrawing(ProgrammingLanguageAssignment.CommandParser)">
+            <summary>
+            Executes the drawing command parsed by the CommandParser.
+            </summary>
+            <param name="parser">The CommandParser containing the command to execute.</param>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PROGRAMMINGLANGUAGEASE.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PROGRAMMINGLANGUAGEASE.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.ScriptForm">
+            <summary>
+            Represents a form for loading, saving, and executing scripts for drawing commands.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.ScriptForm.#ctor(PROGRAMMINGLANGUAGEASE.Canvas)">
+            <summary>
+            Initializes a new instance of the ScriptForm class with a reference to a Canvas object.
+            </summary>
+            <param name="canvas">The canvas to draw on.</param>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.ScriptForm.openButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Open button click event to open and load a script file.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.ScriptForm.saveButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Save button click event to save the script content to a file.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.ScriptForm.loadScriptButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load Script button click event to execute the script commands.
+            </summary>
+        </member>
+        <member name="T:PROGRAMMINGLANGUAGEASE.ApplicationConfiguration">
+            <summary>
+             Bootstrap the application configuration.
+            </summary>
+        </member>
+        <member name="M:PROGRAMMINGLANGUAGEASE.ApplicationConfiguration.Initialize">
+            <summary>
+             Bootstrap the application as follows:
+             <code>
+             global::System.Windows.Forms.Application.EnableVisualStyles();
+             global::System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+             global::System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            </code>
+            </summary>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.CommandParser">
+            <summary>
+            Parses a command string into a command and its arguments.
+            </summary>
+        </member>
+        <member name="P:ProgrammingLanguageAssignment.CommandParser.Command">
+            <summary>
+            Gets the parsed command.
+            </summary>
+        </member>
+        <member name="P:ProgrammingLanguageAssignment.CommandParser.Args">
+            <summary>
+            Gets the parsed arguments of the command.
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.CommandParser.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommandParser class with a command string.
+            </summary>
+            <param name="commandText">The command string to parse.</param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.CommandParser.ParseCommand(System.String)">
+            <summary>
+            Parses the command string into the Command and Args properties.
+            </summary>
+            <param name="commandText">The command string to parse.</param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.CommandParser.ParseArguments(System.String[],System.Int32)">
+            <summary>
+            Parses the arguments from the command parts starting from a given index.
+            </summary>
+            <param name="commandParts">The array of command parts.</param>
+            <param name="startIndex">The start index for parsing arguments.</param>
+            <returns>An array of arguments.</returns>
+        </member>
+    </members>
+</doc>
