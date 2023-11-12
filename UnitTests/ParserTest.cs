@@ -16,13 +16,13 @@ namespace UnitTests
         public void ParseCommandAndArguments()
         {
             // Arrange
-            string commandText = "draw 100 50";
+            string commandText = "drawto 100 50";
 
             // Act
             var parser = new CommandParser(commandText);
 
             // Assert
-            Assert.AreEqual("draw", parser.Command);
+            Assert.AreEqual("drawto", parser.Command);
             CollectionAssert.AreEqual(new string[] { "100", "50" }, parser.Args);
         }
 

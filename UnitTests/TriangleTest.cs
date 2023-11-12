@@ -31,7 +31,7 @@ namespace UnitTests
         /// Test method to verify that executing the TriangleCommand with an invalid radius shows an error message.
         /// </summary>
         [TestMethod]
-        public void Execute_WithInvalidRadius_ShowsErrorMessage()
+        public void Execute_WithInvalidDimension_ShowsErrorMessage()
         {
             var canvas = new Canvas();
             var triangleCommand = new TriangleCommand();

@@ -36,14 +36,14 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                     default:
                         // Handle unrecognized fill mode
                         MessageBox.Show("Invalid fill mode. Use 'on' or 'off'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; // Exit the method after showing the message box
+                        return;
                 }
             }
             else
             {
                 // Handle missing fill mode argument
                 MessageBox.Show("Missing argument for 'fill' command. Use 'on' or 'off'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Exit the method after showing the message box
+                return;
             }
 
             commandTextBox.Clear(); // Clear the command text box after executing the command
