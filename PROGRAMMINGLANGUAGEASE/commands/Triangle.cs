@@ -20,7 +20,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
             Pen drawingPen = canvas.DrawingPen;
             TextBox commandTextBox = canvas.CommandTextBox;
 
-            if (args.Length >= 1)
+            if (args.Length == 1)
             {
                 if (int.TryParse(args[0], out int sideLength))
                 {

@@ -18,7 +18,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
 
         public override void Execute(Canvas canvas, string[] args)
         {
-            if (args.Length >= 2 && int.TryParse(args[0], out int x) && int.TryParse(args[1], out int y))
+            if (args.Length == 2 && int.TryParse(args[0], out int x) && int.TryParse(args[1], out int y))
             {
                 // Set the current position to the specified coordinates
                 canvas.CurrentPosition = new Point(x, y);

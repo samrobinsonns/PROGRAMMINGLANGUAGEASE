@@ -24,7 +24,7 @@ namespace ProgrammingLanguageAssignment
         /// <param name="commandText">The command string to parse.</param>
         public CommandParser(string commandText)
         {
-            ParseCommand(commandText);
+            ParseCommand(commandText); //Initialize the parsing process.
         }
 
         /// <summary>
@@ -33,20 +33,20 @@ namespace ProgrammingLanguageAssignment
         /// <param name="commandText">The command string to parse.</param>
         private void ParseCommand(string commandText)
         {
-            string[] commandParts = commandText.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string[] commandParts = commandText.Split(' ', StringSplitOptions.RemoveEmptyEntries); // Split by space and Remove Empty Entries.
 
             if (commandParts.Length == 0)
             {
                 Command = "";
-                Args = Array.Empty<string>();
+                Args = Array.Empty<string>(); // If there are no parts set Command and Args to empty values.
                 return;
             }
 
-            Command = commandParts[0];
+            Command = commandParts[0]; // Assign first part as the Command.
 
-            if (commandParts.Length > 1)
+            if (commandParts.Length > 1) // If more parts exist PraseArguments is called to extract and assign the arguments.
             {
-                Args = ParseArguments(commandParts, 1);
+                Args = ParseArguments(commandParts, 1); 
             }
             else
             {
@@ -60,16 +60,16 @@ namespace ProgrammingLanguageAssignment
         /// <param name="commandParts">The array of command parts.</param>
         /// <param name="startIndex">The start index for parsing arguments.</param>
         /// <returns>An array of arguments.</returns>
-        private string[] ParseArguments(string[] commandParts, int startIndex)
+        private string[] ParseArguments(string[] commandParts, int startIndex) // CommandParts represent the Command, Start Index represents the index from which to start parsing the arguments.
         {
-            List<string> arguments = new List<string>();
+            List<string> arguments = new List<string>(); // List initialized to to store the parsed arguments.
 
-            for (int i = startIndex; i < commandParts.Length; i++)
+            for (int i = startIndex; i < commandParts.Length; i++) // Iterate over the commandParts array.
             {
-                arguments.Add(commandParts[i]);
+                arguments.Add(commandParts[i]); // Adding Command Parts to arguments list.
             }
 
-            return arguments.ToArray();
+            return arguments.ToArray(); // Convert arguments list back to array.
         }
     }
 }

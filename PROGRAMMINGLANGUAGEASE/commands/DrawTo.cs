@@ -17,7 +17,7 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
         /// <param name="args">The arguments for the 'drawto' command, expecting x and y coordinates as the first two arguments.</param>
         public override void Execute(Canvas canvas, string[] args)
         {
-            if (args.Length >= 2 && int.TryParse(args[0], out int x) && int.TryParse(args[1], out int y))
+            if (args.Length == 2 && int.TryParse(args[0], out int x) && int.TryParse(args[1], out int y))
             {
                 // Get the destination point
                 Point destination = new Point(x, y);

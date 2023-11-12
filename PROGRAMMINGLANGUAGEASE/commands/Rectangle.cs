@@ -20,9 +20,9 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
             Pen drawingPen = canvas.DrawingPen;
             TextBox commandTextBox = canvas.CommandTextBox;
 
-            if (args.Length >= 2)
+            if (args.Length == 2)
             {
-                if (int.TryParse(args[0], out int width) && int.TryParse(args[1], out int height))
+                if (int.TryParse(args[0],out int width) && int.TryParse(args[1], out int height))  // Parsing of First Int as width and Second Int as Height.
                 {
                     // Rectangle should start from the current position
                     int x = currentPosition.X;
