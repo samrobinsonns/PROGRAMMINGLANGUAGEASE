@@ -81,19 +81,6 @@
             <param name="canvas">The canvas on which to execute the command.</param>
             <param name="args">The arguments for the command.</param>
         </member>
-        <member name="T:PROGRAMMINGLANGUAGEASE.Commands.CircleCommand">
-            <summary>
-            Represents a command to draw a circle on the canvas.
-            </summary>
-        </member>
-        <member name="M:PROGRAMMINGLANGUAGEASE.Commands.CircleCommand.Execute(System.Drawing.Graphics,System.String[],PROGRAMMINGLANGUAGEASE.Canvas)">
-            <summary>
-            Executes the circle command on the given canvas using specified graphics and arguments.
-            </summary>
-            <param name="graphics">The graphics object to draw the circle.</param>
-            <param name="args">The arguments for the circle command, expecting a radius as the first argument.</param>
-            <param name="canvas">The canvas on which to draw the circle.</param>
-        </member>
         <member name="T:PROGRAMMINGLANGUAGEASE.Commands.DrawToCommand">
             <summary>
             Represents a command to draw a line from the current position to a specified destination on the canvas.

@@ -46,7 +46,11 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                 return;
             }
 
-            commandTextBox.Clear(); // Clear the command text box after executing the command
+            // Use Invoke to update the commandTextBox on the UI thread
+            commandTextBox.Invoke((MethodInvoker)delegate
+            {
+                commandTextBox.Clear();
+            });
         }
     }
 }

@@ -40,7 +40,11 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
 
                     // Draw the outline of the rectangle regardless of filling
                     graphics.DrawRectangle(drawingPen, x, y, width, height);
-                    commandTextBox.Clear();
+                    // Use Invoke to update the commandTextBox on the UI thread
+                    commandTextBox.Invoke((MethodInvoker)delegate
+                    {
+                        commandTextBox.Clear();
+                    });
                 }
                 else
                 {

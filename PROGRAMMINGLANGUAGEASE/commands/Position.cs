@@ -23,6 +23,11 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                 // Set the current position to the specified coordinates
                 canvas.CurrentPosition = new Point(x, y);
                 canvas.CommandTextBox.Clear();
+                // Use Invoke to update the commandTextBox on the UI thread
+                canvas.CommandTextBox.Invoke((MethodInvoker)delegate
+                {
+                    canvas.CommandTextBox.Clear();
+                });
             }
             else
             {

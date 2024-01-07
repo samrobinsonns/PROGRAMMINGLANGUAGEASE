@@ -100,7 +100,11 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
                 MessageBox.Show("Invalid pen command. Please provide a valid color.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            commandTextBox.Clear();
+            // Use Invoke to update the commandTextBox on the UI thread
+            commandTextBox.Invoke((MethodInvoker)delegate
+            {
+                commandTextBox.Clear();
+            });
         }
     }
 }

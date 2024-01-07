@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace ProgrammingLanguageAssignment
 {
@@ -24,7 +25,9 @@ namespace ProgrammingLanguageAssignment
         /// <param name="commandText">The command string to parse.</param>
         public CommandParser(string commandText)
         {
-            ParseCommand(commandText); //Initialize the parsing process.
+            Thread parseThread = new Thread(() => ParseCommand(commandText));
+            parseThread.Start();
+            parseThread.Join(); // Wait for the thread to complete
         }
 
         /// <summary>

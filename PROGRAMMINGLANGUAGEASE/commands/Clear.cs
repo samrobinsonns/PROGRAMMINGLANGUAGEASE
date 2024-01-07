@@ -10,8 +10,12 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
             TextBox commandTextBox = canvas.CommandTextBox;
             // Clear the drawing canvas
             canvas.DrawingPictureBox.Invalidate();
-            commandTextBox.Clear();
-            
+            // Use Invoke to update the commandTextBox on the UI thread
+            commandTextBox.Invoke((MethodInvoker)delegate
+            {
+                commandTextBox.Clear();
+            });
+
         }
     }
 }

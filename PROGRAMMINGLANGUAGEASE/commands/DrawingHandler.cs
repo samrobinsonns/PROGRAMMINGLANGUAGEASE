@@ -11,6 +11,8 @@ namespace PROGRAMMINGLANGUAGEASE
     /// </summary>
     public class DrawingHandler
     {
+        private readonly object graphicsLock = new object();
+
         private Canvas canvas;
 
         /// <summary>
@@ -51,6 +53,7 @@ namespace PROGRAMMINGLANGUAGEASE
         /// <param name="parser">The CommandParser containing the command to execute.</param>
         public void ExecuteDrawing(CommandParser parser)
         {
+            lock (graphicsLock)
             using (Graphics graphics = canvas.DrawingPictureBox.CreateGraphics())
             {
                 switch (parser.Command.ToLower())

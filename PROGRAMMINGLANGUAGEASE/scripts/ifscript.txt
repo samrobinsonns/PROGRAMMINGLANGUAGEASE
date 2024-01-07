@@ -1,0 +1,4 @@
+Count = 9
+If Count < 10
+circle 50
+Endif

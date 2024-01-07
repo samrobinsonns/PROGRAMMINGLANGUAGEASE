@@ -45,7 +45,11 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
 
                     // Draw the outline of the triangle
                     graphics.DrawPolygon(drawingPen, points);
-                    commandTextBox.Clear();
+                    // Use Invoke to update the commandTextBox on the UI thread
+                    commandTextBox.Invoke((MethodInvoker)delegate
+                    {
+                        commandTextBox.Clear();
+                    });
                 }
                 else
                 {

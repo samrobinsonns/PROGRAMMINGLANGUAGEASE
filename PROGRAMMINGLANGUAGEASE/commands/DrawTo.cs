@@ -30,7 +30,11 @@ namespace PROGRAMMINGLANGUAGEASE.Commands
 
                 // Update the current position to the destination
                 canvas.CurrentPosition = destination;
-                canvas.CommandTextBox.Clear();
+                // Use Invoke to update the commandTextBox on the UI thread
+                canvas.CommandTextBox.Invoke((MethodInvoker)delegate
+                {
+                    canvas.CommandTextBox.Clear();
+                });
             }
             else
             {
