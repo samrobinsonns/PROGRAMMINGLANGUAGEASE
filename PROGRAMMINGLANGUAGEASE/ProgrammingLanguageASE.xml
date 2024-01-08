@@ -180,33 +180,6 @@
             <param name="args">The arguments for the triangle command, expecting a side length as the first argument.</param>
             <param name="canvas">The canvas on which to draw the triangle.</param>
         </member>
-        <member name="T:PROGRAMMINGLANGUAGEASE.DrawingHandler">
-            <summary>
-            Handles the execution of drawing commands on a canvas.
-            </summary>
-        </member>
-        <member name="F:PROGRAMMINGLANGUAGEASE.DrawingHandler.basicCommands">
-            <summary>
-            Stores basic drawing commands.
-            </summary>
-        </member>
-        <member name="F:PROGRAMMINGLANGUAGEASE.DrawingHandler.graphicsCommands">
-            <summary>
-            Stores graphics commands for shapes.
-            </summary>
-        </member>
-        <member name="M:PROGRAMMINGLANGUAGEASE.DrawingHandler.#ctor(PROGRAMMINGLANGUAGEASE.Canvas)">
-            <summary>
-            Initializes a new instance of the DrawingHandler class with a specified canvas.
-            </summary>
-            <param name="canvas">The canvas to draw on.</param>
-        </member>
-        <member name="M:PROGRAMMINGLANGUAGEASE.DrawingHandler.ExecuteDrawing(ProgrammingLanguageAssignment.CommandParser)">
-            <summary>
-            Executes the drawing command parsed by the CommandParser.
-            </summary>
-            <param name="parser">The CommandParser containing the command to execute.</param>
-        </member>
         <member name="M:PROGRAMMINGLANGUAGEASE.Program.Main">
             <summary>
              The main entry point for the application.

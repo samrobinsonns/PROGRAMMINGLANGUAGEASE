@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using PROGRAMMINGLANGUAGEASE.Commands;
 using ProgrammingLanguageAssignment;
+using System.Collections.Generic;
 
 namespace PROGRAMMINGLANGUAGEASE
 {
@@ -12,7 +13,6 @@ namespace PROGRAMMINGLANGUAGEASE
     public class DrawingHandler
     {
         private readonly object graphicsLock = new object();
-
         private Canvas canvas;
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace PROGRAMMINGLANGUAGEASE
         };
 
         /// <summary>
-        /// Initializes a new instance of the DrawingHandler class with a specified canvas.
+        /// Initializes a new instance of the <see cref="DrawingHandler"/> class with a specified canvas.
         /// </summary>
         /// <param name="canvas">The canvas to draw on.</param>
         public DrawingHandler(Canvas canvas)
@@ -53,28 +53,47 @@ namespace PROGRAMMINGLANGUAGEASE
         /// <param name="parser">The CommandParser containing the command to execute.</param>
         public void ExecuteDrawing(CommandParser parser)
         {
-            lock (graphicsLock)
-            using (Graphics graphics = canvas.DrawingPictureBox.CreateGraphics())
+            // Check if invoke is required (if called from a non-UI thread)
+            if (canvas.InvokeRequired)
             {
-                switch (parser.Command.ToLower())
+                // Marshal the execution back to the UI thread
+                canvas.Invoke(new Action(() => ExecuteDrawingInternal(parser)));
+            }
+            else
+            {
+                ExecuteDrawingInternal(parser);
+            }
+        }
+
+        /// <summary>
+        /// Executes the drawing command internally, ensuring thread safety.
+        /// </summary>
+        /// <param name="parser">The CommandParser containing the command to execute.</param>
+        private void ExecuteDrawingInternal(CommandParser parser)
+        {
+            lock (graphicsLock)
+            {
+                using (Graphics graphics = canvas.DrawingPictureBox.CreateGraphics())
                 {
-                    case "moveto":
-                    case "drawto":
-                    case "fill":
-                    case "reset":
-                    case "clear":
-                    case "pen":
-                        this.basicCommands[parser.Command.ToLower()].Execute(this.canvas, parser.Args);
-                        break;
-                    case "rectangle":
-                    case "circle":
-                    case "triangle":
-                        this.graphicsCommands[parser.Command.ToLower()].Execute(graphics, parser.Args, this.canvas);
-                        break;
-                    default:
-                        // Handle unrecognized command here, for example:
-                        MessageBox.Show("Unrecognized command: " + parser.Command, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
+                    switch (parser.Command.ToLower())
+                    {
+                        case "moveto":
+                        case "drawto":
+                        case "fill":
+                        case "reset":
+                        case "clear":
+                        case "pen":
+                            basicCommands[parser.Command.ToLower()].Execute(canvas, parser.Args);
+                            break;
+                        case "rectangle":
+                        case "circle":
+                        case "triangle":
+                            graphicsCommands[parser.Command.ToLower()].Execute(graphics, parser.Args, canvas);
+                            break;
+                        default:
+                            MessageBox.Show("Unrecognized command: " + parser.Command, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                    }
                 }
             }
         }
