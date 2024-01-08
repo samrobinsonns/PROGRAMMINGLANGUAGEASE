@@ -81,7 +81,10 @@ namespace PROGRAMMINGLANGUAGEASE
             string scriptContent = ScriptTextBox.Text;
             await Task.Run(() => ExecuteScript(scriptContent));
         }
-
+        /// <summary>
+        /// Executes the script content.
+        /// </summary>
+        /// <param name="scriptContent">The script content to execute.</param>
         private void ExecuteScript(string scriptContent)
         {
             string[] lines = scriptContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
